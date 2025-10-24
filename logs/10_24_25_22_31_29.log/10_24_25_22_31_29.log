@@ -1,0 +1,7 @@
+2025-10-24 22:31:29,799 24 root INFO Enter the data ingestion conponent or method
+2025-10-24 22:31:29,803 28 root INFO Read the dataset as dataframe
+2025-10-24 22:31:29,804 32 root INFO Train test splited
+2025-10-24 22:31:29,808 38 root INFO Ingestion of data is completed
+2025-10-24 22:31:29,810 67 root INFO Read train and test data
+2025-10-24 22:31:29,810 49 root INFO Numericals columns Standard scaling completed
+2025-10-24 22:31:29,810 50 root INFO Categorical columns encoding completed

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Social Media & Mental Health — Input Form</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      color: #222;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 2rem 2.2rem;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      width: 100%;
+      max-width: 720px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.2rem;
+      font-weight: 600;
+      font-size: 1.6rem;
+      color: #222;
+    }
+
+    .about-section {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.5;
+      font-size: 0.93rem;
+      color: #333;
+    }
+
+    .about-section h3 {
+      margin-top: 0;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 0.5rem;
+    }
+
+    .about-section p {
+      margin: 0.4rem 0;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.6rem 1.8rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      background: #fafafa;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: #007bff;
+      background: #fff;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+    }
+
+    button {
+      grid-column: span 2;
+      padding: 0.8rem;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.25s ease;
+    }
+
+    button:hover {
+      background: #005fcc;
+    }
+
+    .result {
+      text-align: center;
+      margin-top: 1.4rem;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    @media (max-width: 600px) {
+      .form-container {
+        padding: 1.7rem;
+      }
+
+      form {
+        gap: 1.3rem;
+      }
+
+      button {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Social Media & Mental Health</h2>
+
+    <div class="about-section">
+      <h3>About this file</h3>
+      <p><strong>Suggest Edits:</strong> This dataset captures the delicate relationship between social media habits and mental well-being.</p>
+      <p>It combines variables such as screen time, stress level, sleep quality, digital detox days, and happiness index — ideal for regression, correlation, or mental health prediction tasks.</p>
+      <p>Researchers, psychologists, and data enthusiasts can use this dataset to study how lifestyle and online activity patterns affect human emotions and overall wellness.</p>
+    </div>
+
+    <form action="{{url_for('predict_data')}}" method="POST">
+
+      <div>
+        <label for="Gender">Gender</label>
+        <select name="Gender" id="Gender" required>
+          <option value="" disabled selected>Select gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="Social_Media_Platform">Platform</label>
+        <select name="Social_Media_Platform" id="Social_Media_Platform" required>
+          <option value="" disabled selected>Select platform</option>
+          <option>Instagram</option>
+          <option>Facebook</option>
+          <option>Twitter (X)</option>
+          <option>TikTok</option>
+          <option>YouTube</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="Age">Age</label>
+        <input type="number" name="Age" id="Age" min="1" required>
+      </div>
+
+      <div>
+        <label for="Daily_Screen_Time">Screen Time (hrs/day)</label>
+        <input type="number" name="Daily_Screen_Time" id="Daily_Screen_Time" step="0.1" required>
+      </div>
+
+      <div>
+        <label for="Stress_Level">Stress (1–10)</label>
+        <input type="number" name="Stress_Level" id="Stress_Level" step="0.1" min="1" max="10" required>
+      </div>
+
+      <div>
+        <label for="Days_Without_Social_Media">Days Without SM</label>
+        <input type="number" name="Days_Without_Social_Media" id="Days_Without_Social_Media" min="0" required>
+      </div>
+
+      <div>
+        <label for="Exercise_Frequency">Exercise (days/week)</label>
+        <input type="number" name="Exercise_Frequency" id="Exercise_Frequency" min="0" max="7" required>
+      </div>
+
+      <div>
+        <label for="Sleep_Quality">Sleep (1–10)</label>
+        <input type="number" name="Sleep_Quality" id="Sleep_Quality" step="0.1" min="1" max="10" required>
+      </div>
+
+      <button type="submit">Predict</button>
+    </form>
+
+    <div class="result">
+      Prediction: {{result}}
+    </div>
+  </div>
+
+</body>
+</html>
